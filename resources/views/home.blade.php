@@ -38,12 +38,47 @@
             <div class="row">
                 @foreach ($products as $product)
                     <div class="col-md-4">
-                        <div class="product-item">
-                            <a href="#"><img src="{{ asset('storage/' . $product->image) }}" alt=""></a>
+                        <!-- Product Card -->
+                        <div class="product-item" data-toggle="modal" data-target="#productModal{{ $product->id }}">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="">
                             <div class="down-content">
-                                <a href="#"><h4>{{ $product->name }}</h4></a>
-                                <h6>Rp.{{ $product->price }}</h6>
+                                <h4>{{ $product->name }}</h4>
+                                <h6>Rp {{ number_format($product->price, 0, ',', '.') }}</h6>
                                 <p>{{ $product->description }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal for each product -->
+                    <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1" role="dialog"
+                        aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="productModalLabel{{ $product->id }}">Product Details</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid"
+                                                alt="Product Image">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>{{ $product->name }}</h4>
+                                            <h6>Rp {{ number_format($product->price, 0, ',', '.') }}</h6>
+                                            <p>{{ $product->description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <a href="#" class="btn btn-success">
+                                        <i class="fa fa-whatsapp"></i>
+                                        Pesan Sekarang</a>
+                                </div>
                             </div>
                         </div>
                     </div>

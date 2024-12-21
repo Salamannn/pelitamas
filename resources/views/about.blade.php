@@ -34,7 +34,9 @@
                 <div class="col-md-6">
                     <div class="left-content">
                         <h4>Who we are &amp; What we do?</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur
+                            similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem
+                            perferendis dicta dolorem non blanditiis ex fugiat.</p>
                         <ul class="social-icons">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -54,33 +56,44 @@
                 <h2>Our Team Members</h2>
             </div>
             <div class="row">
-                @for ($i = 1; $i <= 6; $i++)
+                @foreach ($articles as $article)
                     <div class="col-md-4">
-                        <div class="team-member">
+                        <article class="team-member" data-toggle="modal" data-target="#articleModal-{{ $article->id }}">
                             <div class="thumb-container">
-                                <img src="{{ asset('assets/images/team_0' . $i . '.jpg') }}" alt="">
-                                <div class="hover-effect">
-                                    <div class="hover-content">
-                                        <ul class="social-icons">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                        </ul>
-                                    </div>
+                                <img src="{{ asset('storage/' . $article->image) }}" class="card-img-top"
+                                    alt="{{ $article->title }}">
+                                <div class="down-content">
+                                    <h5 class="card-title">{{ $article->title }}</h5>
+                                    <p class="card-text">{{ Str::limit($article->content, 100, '...') }}</p>
                                 </div>
                             </div>
-                            <div class="down-content">
-                                <h4>Team Member {{ $i }}</h4>
-                                <span>Position</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </article>
+                    </div>
+
+                    <!-- Modal for Article -->
+                    <div class="modal fade" id="articleModal-{{ $article->id }}" tabindex="-1" role="dialog"
+                        aria-labelledby="articleModalLabel-{{ $article->id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="articleModalLabel-{{ $article->id }}">{{ $article->title }}
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid mx-auto d-block" style="max-width: 100%; max-height: 300px; object-fit: cover;" alt="{{ $article->title }}">
+                                    <p>{{ $article->content }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>
+
 
     <!-- Services -->
     <div class="services">

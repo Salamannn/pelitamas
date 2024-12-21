@@ -28,7 +28,7 @@
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
 
     <!-- Header -->
     @include('partials.header')
@@ -42,11 +42,15 @@
     <!-- Scripts -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/owl.js') }}"></script>
     <script src="{{ asset('assets/js/slick.js') }}"></script>
     <script src="{{ asset('assets/js/isotope.js') }}"></script>
     <script src="{{ asset('assets/js/accordions.js') }}"></script>
+    {{-- <script>
+        console.log(bootstrap?.Version || 'Bootstrap not detected');
+    </script> --}}
     @stack('scripts')
 </body>
 
