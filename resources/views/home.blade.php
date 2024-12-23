@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="#" class="btn btn-success">
+                                    <a href="https://wa.me/6282186148884?text={{ urlencode('Halo Pelitamas, Saya ingin memesan / bertanya terkait ' . $product->name . '. Terimakasih') }}" class="btn btn-success">
                                         <i class="fa fa-whatsapp"></i>
                                         Pesan Sekarang</a>
                                 </div>
