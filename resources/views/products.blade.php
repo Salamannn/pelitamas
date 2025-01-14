@@ -58,7 +58,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="https://wa.me/6282186148884?text={{ urlencode('Halo Pelitamas, Saya ingin memesan / bertanya terkait ' . $product->name . '. Terimakasih') }}" class="btn btn-success">
+                                    <a href="https://wa.me/6282186148884?text={{ urlencode('Halo Pelitamas, Saya ingin memesan / bertanya terkait ' . $product->name . '. Terimakasih') }}"
+                                        class="btn btn-success">
                                         <i class="fa fa-whatsapp"></i>
                                         Pesan Sekarang</a>
                                 </div>
@@ -66,6 +67,10 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <!-- Pagination Links -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ $products->links() }}
             </div>
         </div>
     </div>

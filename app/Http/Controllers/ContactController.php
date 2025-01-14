@@ -9,7 +9,8 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $company = CompanyProfile::all();
+        $company = CompanyProfile::first();
+        // dd($company->description);
         return view('contact',compact('company'));
     }
 }

@@ -30,7 +30,7 @@
                 <div class="col-md-4">
                     <div class="left-content">
                         <h4>About our office</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eumester consectetur similique.</p>
+                        <p>{{$company->description}}</p>
                         <ul class="social-icons">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -97,13 +97,13 @@
                         <li>
                             <a>Location</a>
                             <div class="content">
-                                <p>Av. Lúcio Costa, Rio de Janeiro, Brazil</p>
+                                <p>{{$company->address}}</p>
                             </div>
                         </li>
                         <li>
                             <a>Contact</a>
                             <div class="content">
-                                <p>Email: info@example.com<br>Phone: +123 456 789</p>
+                                <p>Email: {{$company->email}}<br>Phone: {{$company->phone}}</p>
                             </div>
                         </li>
                     </ul>

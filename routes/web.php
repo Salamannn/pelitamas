@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductController;
 Route::get('/',[HomeController::class, 'index'])->name('home');
 
 // Route untuk halaman produk
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products', [ProductController::class, 'index'])->name('products');
 
 
 Route::get('/about', [AboutController::class,'index'])->name('about');
