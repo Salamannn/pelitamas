@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="products">
+    {{-- <div class="products">
         <div class="container">
             <div class="row">
                 @foreach ($products as $product)
@@ -27,7 +27,7 @@
                             <div class="down-content">
                                 <h4>{{ $product->name }}</h4>
                                 <h6>Rp {{ number_format($product->price, 0, ',', '.') }}</h6>
-                                <p>{{ $product->description }}</p>
+                                <p>{{ Str::limit($product->description, 100) }}</p>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,67 @@
             </div>
             <!-- Pagination Links -->
             <div class="d-flex justify-content-center mt-4">
-                {{ $products->links() }}
+                {{ $products->links('pagination::bootstrap-4') }}
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="products">
+        <div class="container">
+            <div class="row">
+                @foreach ($products as $product)
+                    <div class="col-lg-4 col-md-4">
+                        <div class="product-item" data-toggle="modal" data-target="#productModal{{ $product->id }}">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt=""
+                                style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                            <div class="down-content">
+                                <h4>{{ $product->name }}</h4>
+                                <h6>Rp {{ number_format($product->price, 0, ',', '.') }}</h6>
+                                <p>{{ Str::limit($product->description, 100) }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal for each product -->
+                    <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1" role="dialog"
+                        aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="productModalLabel{{ $product->id }}">Detail Produk</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid"
+                                                alt="Gambar Produk">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>{{ $product->name }}</h4>
+                                            <h6>Rp {{ number_format($product->price, 0, ',', '.') }}</h6>
+                                            <p>{{ $product->description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <a href="https://wa.me/6282186148884?text={{ urlencode('Halo Pelitamas, Saya ingin memesan / bertanya terkait ' . $product->name . '. Terimakasih') }}"
+                                        class="btn btn-success">
+                                        <i class="fa fa-whatsapp"></i> Pesan Sekarang
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Pagination Links -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ $products->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

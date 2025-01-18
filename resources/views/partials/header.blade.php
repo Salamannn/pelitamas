@@ -9,7 +9,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                {{-- <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
@@ -17,9 +17,30 @@
                         <a class="nav-link" href="{{ url('/products') }}">Our Products</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/products') }}">Articles</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('/about') }}">About Us</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
+                    </li>
+                </ul> --}}
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
+                    </li>
+                    <li class="nav-item {{ Request::is('products') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/products') }}">Our Products</a>
+                    </li>
+                    <li class="nav-item {{ Request::is('articles') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/articles') }}">Articles</a>
+                    </li>
+                    <li class="nav-item {{ Request::is('about') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item {{ Request::is('contact') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
                     </li>
                 </ul>
