@@ -76,9 +76,9 @@
                             @endif
                             <div class="card-body">
                                 <h5 class="card-title">{{ $article->title }}</h5>
-                                <p class="card-text">
+                                {{-- <p class="card-text">
                                     {{ Str::limit($article->content, 100, '...') }}
-                                </p>
+                                </p> --}}
                                 <!-- Button to Open Modal -->
                                 <button class="btn btn-primary" data-toggle="modal"
                                     data-target="#articleModal{{ $article->id }}">Baca Selengkapnya</button>
