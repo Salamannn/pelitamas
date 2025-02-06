@@ -81,8 +81,7 @@
                 @foreach ($products as $product)
                     <div class="col-lg-4 col-md-4">
                         <div class="product-item" data-toggle="modal" data-target="#productModal{{ $product->id }}">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt=""
-                                style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                             <div class="down-content">
                                 <h4>{{ $product->name }}</h4>
                                 <h6>Rp {{ number_format($product->price, 0, ',', '.') }}</h6>

@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- Banner -->
-    <div class="banner header-text">
+    {{-- <div class="banner header-text">
         <div class="owl-banner owl-carousel">
             <div class="banner-item-01">
                 <div class="text-content">
@@ -26,6 +26,24 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+
+    @php
+        $banners = \App\Models\Banner::where('page','home')->get()->all();
+    @endphp
+
+    <div class="banner header-text">
+        <div class="owl-banner owl-carousel">
+            @foreach ($banners as $banner)
+                <div class="banner-item">
+                    <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}">
+                    <div class="text-content">
+                        <h4>{{ $banner->title }}</h4>
+                        <h2>{{ $banner->subtitle }}</h2>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 
     <!-- Latest Products -->
@@ -40,7 +58,7 @@
                     <div class="col-md-4">
                         <!-- Product Card -->
                         <div class="product-item" data-toggle="modal" data-target="#productModal{{ $product->id }}">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                             <div class="down-content">
                                 <h4>{{ $product->name }}</h4>
                                 <h6>Rp {{ number_format($product->price, 0, ',', '.') }}</h6>
@@ -75,7 +93,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="https://wa.me/6282186148884?text={{ urlencode('Halo Pelitamas, Saya ingin memesan / bertanya terkait ' . $product->name . '. Terimakasih') }}" class="btn btn-success">
+                                    <a href="https://wa.me/6282186148884?text={{ urlencode('Halo Pelitamas, Saya ingin memesan / bertanya terkait ' . $product->name . '. Terimakasih') }}"
+                                        class="btn btn-success">
                                         <i class="fa fa-whatsapp"></i>
                                         Pesan Sekarang</a>
                                 </div>

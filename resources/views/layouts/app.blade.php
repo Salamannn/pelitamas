@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/templatemo-sixteen.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     <!-- Additional Head Content -->
     @stack('head')
@@ -49,10 +50,24 @@
     <script src="{{ asset('assets/js/slick.js') }}"></script>
     <script src="{{ asset('assets/js/isotope.js') }}"></script>
     <script src="{{ asset('assets/js/accordions.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $(".owl-banner").owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                nav: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true
+            });
+        });
+    </script>
     {{-- <script>
         console.log(bootstrap?.Version || 'Bootstrap not detected');
     </script> --}}
     @stack('scripts')
+
 </body>
 
 </html>
