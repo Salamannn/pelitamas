@@ -10,6 +10,7 @@ class CompanyProfile extends Model
         'name',
         'description',
         'address',
+        'google_maps',
         'phone',
         'email',
         'logo'

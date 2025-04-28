@@ -14,8 +14,7 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 
 // Route untuk halaman produk
 Route::get('/products', [ProductController::class, 'index'])->name('products');
-
-
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/about', [AboutController::class,'index'])->name('about');
 
 Route::get('/contact', [ContactController::class,'index'])->name('contact');

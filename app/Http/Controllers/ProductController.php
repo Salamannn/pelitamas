@@ -16,4 +16,11 @@ class ProductController extends Controller
         // Return ke view 'products' dengan data $products
         return view('products', compact('products'));
     }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        return view('product-detail', compact('product'));
+    }
+
 }

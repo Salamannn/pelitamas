@@ -32,6 +32,11 @@ class CompanyProfileResource extends Resource
                 Forms\Components\TextInput::make('address')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('google_maps')
+                    ->label('Google Maps Iframe')
+                    ->hint('Masukkan iframe dari Google Maps')
+                    ->rows(3)
+                    ->nullable(),
                 Forms\Components\TextInput::make('phone')
                     ->tel()
                     ->required()
@@ -53,6 +58,7 @@ class CompanyProfileResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('google_maps')->limit(30),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
