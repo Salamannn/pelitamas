@@ -28,20 +28,18 @@
                 </div>
                 <div class="col-md-6">
                     <div class="right-image">
-                        <img src="{{ asset('assets/images/feature-image.jpg') }}" alt="">
+                        <img src="{{ asset('assets/images/pabrik.jpg') }}" alt="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="left-content">
                         <h4>Who we are &amp; What we do?</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur
-                            similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem
-                            perferendis dicta dolorem non blanditiis ex fugiat.</p>
+                        <p>{{ $company->description }}</p>
                         <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            @foreach ($sosialMedia as $item)
+                                <li><a href="{{ $item->profile_url }}"><i class="fa fa-{{ $item->platform_name }}"></i></a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -76,14 +74,17 @@
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="articleModalLabel-{{ $article->id }}">{{ $article->title }}
+                                    <h5 class="modal-title" id="articleModalLabel-{{ $article->id }}">
+                                        {{ $article->title }}
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid mx-auto d-block" style="max-width: 100%; max-height: 300px; object-fit: cover;" alt="{{ $article->title }}">
+                                    <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid mx-auto d-block"
+                                        style="max-width: 100%; max-height: 300px; object-fit: cover;"
+                                        alt="{{ $article->title }}">
                                     <p>{{ $article->content }}</p>
                                 </div>
                             </div>
@@ -95,40 +96,47 @@
     </div>
 
 
-    <!-- Services -->
+    <!-- Services Section -->
     <div class="services">
         <div class="container">
             <div class="row">
-                @for ($i = 1; $i <= 3; $i++)
+                @foreach ($services as $service)
                     <div class="col-md-4">
                         <div class="service-item">
                             <div class="icon">
-                                <i class="fa fa-gear"></i>
+                                <!-- Tampilkan ikon dari model -->
+                                <img src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->title }}"
+                                    class="w-16 mx-auto">
                             </div>
                             <div class="down-content">
-                                <h4>Service {{ $i }}</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="filled-button">Read More</a>
+                                <h4>{{ $service->title }}</h4>
+                                <p>{{ $service->description }}</p>
+                                @if ($service->link)
+                                    <a href="{{ $service->link }}" class="filled-button">Read More</a>
+                                @else
+                                    <a href="#" class="filled-button">Read More</a>
+                                @endif
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>
 
-    <!-- Happy Clients -->
+    <!-- Happy Partners -->
     <div class="happy-clients">
         <div class="container">
             <div class="section-heading">
                 <h2>Happy Partners</h2>
             </div>
             <div class="owl-clients owl-carousel">
-                @for ($i = 1; $i <= 6; $i++)
+                @foreach ($partners as $partner)
                     <div class="client-item">
-                        <img src="{{ asset('assets/images/client-01.png') }}" alt="Client {{ $i }}">
+                        <!-- Tampilkan gambar partner -->
+                        <img src="{{ asset('storage/' . $partner->image) }}" alt="{{ $partner->title }}">
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>
