@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/templatemo-sixteen.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
+    @yield('meta')
     <!-- Additional Head Content -->
     @stack('head')
 </head>

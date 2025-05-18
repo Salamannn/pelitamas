@@ -2,6 +2,16 @@
 
 @section('title', 'Articles')
 
+@push('head')
+<style>
+    .article-thumbnail {
+    width: 100%;
+    height: 250px; /* atau 300px, sesuai kebutuhan */
+    object-fit: cover;
+    border-radius: 8px;
+}
+</style>
+@endpush
 @section('content')
     <div class="page-heading products-heading header-text">
         <div class="container">
@@ -69,6 +79,7 @@
                         <div class="card h-100">
                             @if ($article->image)
                                 <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}"
+                                class="article-thumbnail"
                                     style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px;">
                             @else
                                 <img src="https://via.placeholder.com/300x200" alt="Default Image"
@@ -80,8 +91,7 @@
                                     {{ Str::limit($article->content, 100, '...') }}
                                 </p> --}}
                                 <!-- Button to Open Modal -->
-                                <button class="btn btn-primary" data-toggle="modal"
-                                    data-target="#articleModal{{ $article->id }}">Baca Selengkapnya</button>
+                                <a href="{{ route('article.show', $article->slug) }}"><button class="btn btn-primary" >Baca Selengkapnya</button></a>
                             </div>
                             <div class="card-footer text-muted">
                                 Diposting pada {{ $article->created_at->format('d M Y') }}

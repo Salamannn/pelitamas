@@ -10,7 +10,12 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::latest()->paginate(3);
-        return view('articles',compact('articles'));
+        return view('articles', compact('articles'));
     }
 
+    public function show($slug)
+    {
+        $article = Article::where('slug', $slug)->firstOrFail();
+        return view('article-detail', compact('article'));
+    }
 }

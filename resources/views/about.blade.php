@@ -63,6 +63,7 @@
                                 <div class="down-content">
                                     <h5 class="card-title">{{ $article->title }}</h5>
                                     <p class="card-text">{{ Str::limit($article->content, 100, '...') }}</p>
+                                    <a href="{{ route('article.show', $article->slug) }}"><button class="btn btn-primary" >Baca Selengkapnya</button></a>
                                 </div>
                             </div>
                         </article>
@@ -87,6 +88,7 @@
                                         alt="{{ $article->title }}">
                                     <p>{{ $article->content }}</p>
                                 </div>
+
                             </div>
                         </div>
                     </div>

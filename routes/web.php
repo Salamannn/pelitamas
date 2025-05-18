@@ -20,4 +20,4 @@ Route::get('/about', [AboutController::class,'index'])->name('about');
 Route::get('/contact', [ContactController::class,'index'])->name('contact');
 
 Route::get('/articles', [ArticleController::class,'index'])->name('articles');
-
+Route::get('/article/{slug}', [ArticleController::class, 'show'])->name('article.show');

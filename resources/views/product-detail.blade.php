@@ -2,6 +2,15 @@
 
 @section('title', 'Home')
 
+@section('meta')
+    <meta name="description" content="{{ Str::limit(strip_tags($product->description), 150) }}">
+    <meta property="og:title" content="{{ $product->name }}">
+    <meta property="og:description" content="{{ Str::limit(strip_tags($product->description), 150) }}">
+    <meta property="og:image" content="{{ asset('storage/' . $product->image) }}">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <meta name="twitter:card" content="summary_large_image">
+@endsection
+
 @push('head')
     <style>
         body {
